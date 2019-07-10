@@ -1,0 +1,12 @@
+{
+	"files" : {
+		"agents" : "/agents/"
+	},
+	"mySqlConnection" : {
+		"server" : "localhost",
+		"database" : "callcenter2019",
+		"user" : "root",
+		"password" : ""
+	}
+	
+}
