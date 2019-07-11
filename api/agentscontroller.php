@@ -4,7 +4,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         //get one
         if (isset($_GET['id'])) {
-            try {
+            try {,
                 $c = new Agent($_GET['id']);
                 echo json_encode(array(
                     'status' => 0,
