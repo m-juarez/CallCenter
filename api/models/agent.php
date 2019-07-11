@@ -44,6 +44,26 @@
                 mysqli_stmt_close($command); //close command
                 $connection->close(); //close connection
             }
+                        //1 argument received : gets data from database
+            if (func_num_args() == 2) {
+                $connection = MySqlConnection::getConnection(); //get connection
+                $query = 'select id, name, photo from agents where name = ? and pin = ?'; //query
+                $command = $connection->prepare($query); //prepare statement
+                $command->bind_param('ii',$arguments[0],$arguments[1]); //parameters
+                $command->execute(); //execute
+                $command->bind_result($id, $name, $photo); //bind results
+                //record was found
+                if ($command->fetch()) {
+                    //pass values to the attributes
+                    $this->id = $id;
+                    $this->name = $name;
+                    $this->photo = $photo;
+                }
+                else
+                    throw new RecordNotFoundException($arguments[0]);
+                mysqli_stmt_close($command); //close command
+                $connection->close(); //close connection
+            }
             //multiple arguments received : gets data from arguments
             if (func_num_args() == 3) {
                 $this->id = $arguments[0];
