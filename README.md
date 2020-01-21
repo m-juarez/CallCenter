@@ -1,2 +1,2 @@
 # CallCenter
-A project that simulate a callCenter
+This project simulate a callcenter
